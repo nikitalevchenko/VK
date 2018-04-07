@@ -6,6 +6,7 @@ import com.example.nikitalevcenko.vk.R
 import com.example.nikitalevcenko.vk.modules.main.view.MainActivity
 import com.example.nikitalevcenko.vk.modules.main.vm.IMainViewModel
 import com.example.nikitalevcenko.vk.modules.main.vm.MainViewModel
+import com.example.nikitalevcenko.vk.repo.IAuthRepo
 import com.example.nikitalevcenko.vk.router.BaseNavigator
 import dagger.Module
 import dagger.Provides
@@ -21,10 +22,11 @@ class MainModule(private val activity: MainActivity) {
 
     @Provides
     @NonNull
-    fun viewModel(router: Router): IMainViewModel {
+    fun viewModel(router: Router, authRepo: IAuthRepo): IMainViewModel {
         val viewModel = ViewModelProviders.of(activity).get(MainViewModel::class.java)
 
         viewModel.router = router
+        viewModel.authRepo = authRepo
 
         return viewModel
     }

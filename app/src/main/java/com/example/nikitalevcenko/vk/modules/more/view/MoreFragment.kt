@@ -1,7 +1,6 @@
 package com.example.nikitalevcenko.vk.modules.more.view
 
 
-import android.arch.lifecycle.LifecycleRegistry
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
