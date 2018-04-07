@@ -1,5 +1,7 @@
 package com.example.nikitalevcenko.vk.modules.profile.di
 
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.support.annotation.NonNull
 import com.example.nikitalevcenko.vk.R
@@ -22,10 +24,12 @@ class ProfileModule(private val activity: ProfileActivity) {
     @Provides
     @NonNull
     fun viewModel(router: Router): IProfileViewModel {
-        val viewModel = ViewModelProviders.of(activity).get(ProfileViewModel::class.java)
+        val factory = object : ViewModelProvider.NewInstanceFactory() {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return ProfileViewModel(router) as T
+            }
+        }
 
-        viewModel.router = router
-
-        return viewModel
+        return ViewModelProviders.of(activity, factory).get(ProfileViewModel::class.java)
     }
 }

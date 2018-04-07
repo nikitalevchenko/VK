@@ -1,5 +1,7 @@
 package com.example.nikitalevcenko.vk.modules.news.di
 
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.support.annotation.NonNull
 import com.example.nikitalevcenko.vk.modules.news.view.NewsFragment
@@ -15,10 +17,12 @@ class NewsModule(private val fragment: NewsFragment) {
     @Provides
     @NonNull
     fun viewModel(router: Router): INewsViewModel {
-        val viewModel = ViewModelProviders.of(fragment).get(NewsViewModel::class.java)
+        val factory = object : ViewModelProvider.NewInstanceFactory() {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return NewsViewModel(router) as T
+            }
+        }
 
-        viewModel.router = router
-
-        return viewModel
+        return ViewModelProviders.of(fragment, factory).get(NewsViewModel::class.java)
     }
 }
