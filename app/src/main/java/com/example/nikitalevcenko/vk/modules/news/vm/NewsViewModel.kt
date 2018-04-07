@@ -4,9 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.example.nikitalevcenko.vk.router.PROFILE_MODULE
 import ru.terrakok.cicerone.Router
 
-class NewsViewModel : ViewModel(), INewsViewModel {
-
-    lateinit var router: Router
+class NewsViewModel(private val router: Router) : ViewModel(), INewsViewModel {
 
     // INewsViewModel
     override fun onGoToProfileCLick() {

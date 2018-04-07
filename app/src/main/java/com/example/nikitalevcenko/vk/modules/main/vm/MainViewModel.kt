@@ -12,10 +12,7 @@ import com.example.nikitalevcenko.vk.router.MORE_MODULE
 import com.example.nikitalevcenko.vk.router.NEWS_MODULE
 import ru.terrakok.cicerone.Router
 
-class MainViewModel : ViewModel(), IMainViewModel {
-
-    lateinit var router: Router
-    lateinit var authRepo: IAuthRepo
+class MainViewModel(private val router: Router, authRepo: IAuthRepo) : ViewModel(), IMainViewModel {
 
     private val isAuthorized by lazy {
         authRepo.isAuthorized()

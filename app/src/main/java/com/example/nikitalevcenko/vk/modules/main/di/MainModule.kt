@@ -1,5 +1,7 @@
 package com.example.nikitalevcenko.vk.modules.main.di
 
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.support.annotation.NonNull
 import com.example.nikitalevcenko.vk.R
@@ -23,11 +25,13 @@ class MainModule(private val activity: MainActivity) {
     @Provides
     @NonNull
     fun viewModel(router: Router, authRepo: IAuthRepo): IMainViewModel {
-        val viewModel = ViewModelProviders.of(activity).get(MainViewModel::class.java)
+        val factory = object : ViewModelProvider.NewInstanceFactory() {
 
-        viewModel.router = router
-        viewModel.authRepo = authRepo
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MainViewModel(router, authRepo) as T
+            }
+        }
 
-        return viewModel
+        return ViewModelProviders.of(activity, factory).get(MainViewModel::class.java)
     }
 }
