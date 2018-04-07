@@ -21,7 +21,6 @@ interface AppComponent {
 
     // Subcomponents
     fun plus(module: MainModule): MainComponent
-
     fun plus(module: NewsModule): NewsComponent
     fun plus(module: AuthModule): AuthComponent
     fun plus(module: MoreModule): MoreComponent
