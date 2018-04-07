@@ -6,11 +6,20 @@ import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
 import android.view.MenuItem
 import com.example.nikitalevcenko.vk.R
+import com.example.nikitalevcenko.vk.repo.IAuthRepo
+import com.example.nikitalevcenko.vk.router.AUTH_MODULE
 import com.example.nikitalevcenko.vk.router.MORE_MODULE
 import com.example.nikitalevcenko.vk.router.NEWS_MODULE
 import ru.terrakok.cicerone.Router
 
 class MainViewModel : ViewModel(), IMainViewModel {
+
+    lateinit var router: Router
+    lateinit var authRepo: IAuthRepo
+
+    private val isAuthorized by lazy {
+        authRepo.isAuthorized()
+    }
 
     override val title by lazy {
         MutableLiveData<Int>()
@@ -20,15 +29,21 @@ class MainViewModel : ViewModel(), IMainViewModel {
         MutableLiveData<Int>()
     }
 
-    lateinit var router: Router
-
     // LifecycleObserver
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
-        if (currentItemId.value == null) {
-            title.value = R.string.title_news
-            currentItemId.value = R.id.navigation_news
-            router.newRootScreen(NEWS_MODULE)
+        isAuthorized.observeForever { isAuthorized ->
+            if (isAuthorized == null) return@observeForever
+
+            if (isAuthorized) {
+                if (currentItemId.value == null) {
+                    title.value = R.string.title_news
+                    currentItemId.value = R.id.navigation_news
+                    router.newRootScreen(NEWS_MODULE)
+                }
+            } else {
+                router.newRootScreen(AUTH_MODULE)
+            }
         }
     }
 
