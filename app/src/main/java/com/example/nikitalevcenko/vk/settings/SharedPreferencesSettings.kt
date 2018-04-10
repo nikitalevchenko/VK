@@ -19,17 +19,15 @@ class SharedPreferencesSettings(context: Context) : SettingsStore {
 
     }
 
-    override fun getAccessToken() = sharedPreferences.getString(TOKEN, "")
-
-    override fun hasAccessToken() = sharedPreferences.contains(TOKEN)
-
     override fun saveUserId(userId: Long) {
-
         sharedPreferences.edit()
                 .putLong(USER_ID, userId)
                 .apply()
     }
 
-    // TODO remove default value
-    override fun getUserId() = sharedPreferences.getLong(USER_ID, 0)
+    override fun accessToken() = sharedPreferences.getString(TOKEN, "")
+
+    override fun hasAccessToken() = sharedPreferences.contains(TOKEN)
+
+    override fun userId() = sharedPreferences.getLong(USER_ID, 0)
 }
