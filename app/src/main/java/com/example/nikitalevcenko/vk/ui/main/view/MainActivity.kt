@@ -1,8 +1,5 @@
 package com.example.nikitalevcenko.vk.ui.main.view
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -18,7 +15,7 @@ import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), LifecycleOwner {
+class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModel: IMainViewModel
@@ -47,8 +44,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         }
     }
 
-    private val lifecycleRegistry by lazy { LifecycleRegistry(this) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -76,9 +71,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
         networkConnectionListener.isConnected.observe(this, networkConnectionObserver)
 
-        if (lifecycleRegistry.observerCount == 0) lifecycleRegistry.addObserver(viewModel)
-
-        lifecycleRegistry.markState(Lifecycle.State.CREATED)
+        lifecycle.addObserver(viewModel)
     }
 
     override fun onResume() {
@@ -91,12 +84,12 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         super.onPause()
     }
 
-    override fun onBackPressed() {
-        viewModel.onBackPressed()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         networkConnectionListener.isConnected.removeObserver(networkConnectionObserver)
+    }
+
+    override fun onBackPressed() {
+        viewModel.onBackPressed()
     }
 }

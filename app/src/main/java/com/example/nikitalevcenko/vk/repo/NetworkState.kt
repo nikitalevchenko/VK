@@ -1,5 +1,7 @@
 package com.example.nikitalevcenko.vk.repo
 
+import timber.log.Timber
+
 enum class Status {
     RUNNING,
     SUCCESS,
@@ -14,6 +16,9 @@ data class NetworkState private constructor(
     companion object {
         val LOADED = NetworkState(Status.SUCCESS)
         val LOADING = NetworkState(Status.RUNNING)
-        fun error(throwable: Throwable?) = NetworkState(Status.FAILED, throwable)
+        fun error(throwable: Throwable?): NetworkState {
+            Timber.e(throwable)
+            return NetworkState(Status.FAILED, throwable)
+        }
     }
 }

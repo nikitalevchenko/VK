@@ -22,7 +22,7 @@ private const val AUTH_URL = "https://oauth.vk.com/authorize?client_id=6417543&d
 private const val ACCESS_TOKEN = "access_token"
 private const val USER_ID = "user_id"
 
-class AuthActivity : AppCompatActivity(), LifecycleOwner {
+class AuthActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModel: IAuthViewModel

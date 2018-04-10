@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_more.view.*
 import kotlinx.android.synthetic.main.layout_loader.view.*
 import javax.inject.Inject
 
-class MoreFragment : Fragment(), LifecycleOwner {
+class MoreFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: IMoreViewModel
@@ -42,11 +42,10 @@ class MoreFragment : Fragment(), LifecycleOwner {
         fun newInstance() = MoreFragment()
     }
 
-    private val lifecycleRegistry by lazy { LifecycleRegistry(this) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.component.plus(MoreModule(this)).inject(this)
+        networkConnectionListener.isConnected.observe(this, networkConnectionObserver)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -88,10 +87,6 @@ class MoreFragment : Fragment(), LifecycleOwner {
             showMessage(R.string.feature_not_implemented)
             return@setNavigationItemSelectedListener true
         }
-
-        networkConnectionListener.isConnected.observe(this, networkConnectionObserver)
-
-        lifecycleRegistry.markState(Lifecycle.State.CREATED)
 
         return rootView
     }
