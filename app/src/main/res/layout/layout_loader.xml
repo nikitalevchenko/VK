@@ -3,8 +3,7 @@
     android:id="@+id/loaderContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
-    android:visibility="gone">
+    android:background="@android:color/background_light">
 
     <ProgressBar
         android:id="@+id/progressBar"

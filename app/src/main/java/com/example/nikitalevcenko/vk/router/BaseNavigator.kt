@@ -5,12 +5,12 @@ import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
-import com.example.nikitalevcenko.vk.base.extensions.showMessage
-import com.example.nikitalevcenko.vk.modules.auth.view.AuthActivity
-import com.example.nikitalevcenko.vk.modules.main.view.MainActivity
-import com.example.nikitalevcenko.vk.modules.more.view.MoreFragment
-import com.example.nikitalevcenko.vk.modules.news.view.NewsFragment
-import com.example.nikitalevcenko.vk.modules.profile.view.ProfileActivity
+import com.example.nikitalevcenko.vk.ui.auth.view.AuthActivity
+import com.example.nikitalevcenko.vk.ui.main.view.MainActivity
+import com.example.nikitalevcenko.vk.ui.more.view.MoreFragment
+import com.example.nikitalevcenko.vk.ui.news.view.NewsFragment
+import com.example.nikitalevcenko.vk.ui.profile.view.ProfileActivity
+import com.example.nikitalevcenko.vk.ui.showMessage
 import ru.terrakok.cicerone.android.SupportAppNavigator
 
 const val MAIN_MODULE = "MAIN_MODULE"

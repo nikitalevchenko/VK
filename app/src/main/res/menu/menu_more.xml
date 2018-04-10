@@ -1,0 +1,52 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_friends"
+        android:icon="@drawable/ic_person_white_24dp"
+        android:title="@string/friends" />
+
+    <item
+        android:id="@+id/menu_groups"
+        android:icon="@drawable/ic_group_white_24dp"
+        android:title="@string/groups" />
+
+    <item
+        android:id="@+id/menu_photos"
+        android:icon="@drawable/ic_photo_camera_white_24dp"
+        android:title="@string/photos" />
+
+    <item
+        android:id="@+id/menu_music"
+        android:icon="@drawable/ic_music_note_white_24dp"
+        android:title="@string/music" />
+
+    <item
+        android:id="@+id/menu_video"
+        android:icon="@drawable/ic_video_library_white_24dp"
+        android:title="@string/video" />
+
+    <item
+        android:id="@+id/menu_games"
+        android:icon="@drawable/ic_videogame_asset_white_24dp"
+        android:title="@string/games" />
+
+    <item
+        android:id="@+id/menu_favorite"
+        android:icon="@drawable/ic_star_rate_white_18dp"
+        android:title="@string/favorites" />
+
+    <item
+        android:id="@+id/menu_documents"
+        android:icon="@drawable/ic_insert_drive_file_white_18dp"
+        android:title="@string/documents" />
+
+    <item
+        android:id="@+id/menu_money"
+        android:icon="@drawable/ic_credit_card_white_18dp"
+        android:title="@string/money_transfers" />
+
+    <item
+        android:id="@+id/menu_help"
+        android:icon="@drawable/ic_help_white_18dp"
+        android:title="@string/help" />
+</menu>

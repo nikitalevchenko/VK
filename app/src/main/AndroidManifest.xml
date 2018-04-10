@@ -3,6 +3,7 @@
     package="com.example.nikitalevcenko.vk">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".App"
@@ -14,7 +15,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".modules.main.view.MainActivity"
+            android:name=".ui.main.view.MainActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +24,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".modules.auth.view.AuthActivity" />
+        <activity android:name=".ui.auth.view.AuthActivity" />
 
         <activity
-            android:name=".modules.profile.view.ProfileActivity"
+            android:name=".ui.profile.view.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

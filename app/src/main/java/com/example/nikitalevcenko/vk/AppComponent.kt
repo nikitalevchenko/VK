@@ -1,16 +1,16 @@
 package com.example.nikitalevcenko.vk
 
-import com.example.nikitalevcenko.vk.modules.auth.di.AuthComponent
-import com.example.nikitalevcenko.vk.modules.auth.di.AuthModule
-import com.example.nikitalevcenko.vk.modules.main.di.MainComponent
-import com.example.nikitalevcenko.vk.modules.main.di.MainModule
-import com.example.nikitalevcenko.vk.modules.more.di.MoreComponent
-import com.example.nikitalevcenko.vk.modules.more.di.MoreModule
-import com.example.nikitalevcenko.vk.modules.news.di.NewsComponent
-import com.example.nikitalevcenko.vk.modules.news.di.NewsModule
-import com.example.nikitalevcenko.vk.modules.profile.di.ProfileComponent
-import com.example.nikitalevcenko.vk.modules.profile.di.ProfileModule
 import com.example.nikitalevcenko.vk.router.NavigationModule
+import com.example.nikitalevcenko.vk.ui.auth.di.AuthComponent
+import com.example.nikitalevcenko.vk.ui.auth.di.AuthModule
+import com.example.nikitalevcenko.vk.ui.main.di.MainComponent
+import com.example.nikitalevcenko.vk.ui.main.di.MainModule
+import com.example.nikitalevcenko.vk.ui.more.di.MoreComponent
+import com.example.nikitalevcenko.vk.ui.more.di.MoreModule
+import com.example.nikitalevcenko.vk.ui.news.di.NewsComponent
+import com.example.nikitalevcenko.vk.ui.news.di.NewsModule
+import com.example.nikitalevcenko.vk.ui.profile.di.ProfileComponent
+import com.example.nikitalevcenko.vk.ui.profile.di.ProfileModule
 import dagger.Component
 import javax.inject.Singleton
 
