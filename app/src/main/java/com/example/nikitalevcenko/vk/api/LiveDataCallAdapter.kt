@@ -37,30 +37,33 @@ class LiveDataCallAdapter<R>(private val responseType: Type) : CallAdapter<R, Li
         }
     }
 
-    private fun convert(response: Response<R>): ApiResponse<R> {
-        if (response.isSuccessful()) {
-            return ApiResponse(response.body(), null);
-        } else {
-            var message: String? = null
 
-            if (response.errorBody() != null) {
-                try {
-                    message = response.errorBody()!!.string()
-                } catch (ignored: IOException) {
-                    Timber.e(ignored, "Error while parsing response")
+    companion object {
+        fun <R> convert(response: Response<R>): ApiResponse<R> {
+            if (response.isSuccessful()) {
+                return ApiResponse(response.body(), null);
+            } else {
+                var message: String? = null
+
+                if (response.errorBody() != null) {
+                    try {
+                        message = response.errorBody()!!.string()
+                    } catch (ignored: IOException) {
+                        Timber.e(ignored, "Error while parsing response")
+                    }
+
                 }
 
-            }
+                if (message == null || message.trim().isEmpty()) {
+                    message = response.message()
+                }
 
-            if (message == null || message.trim().isEmpty()) {
-                message = response.message()
-            }
+                if (message == null) {
+                    message = "Unknown server error"
+                }
 
-            if (message == null) {
-                message = "Unknown server error"
+                return ApiResponse(null, ServerError(message))
             }
-
-            return ApiResponse(null, ServerError(message))
         }
     }
 }

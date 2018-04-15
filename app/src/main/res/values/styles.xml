@@ -32,4 +32,48 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="LikesCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:theme">@style/LikesCheckboxTheme</item>
+        <item name="android:textColor">@color/like_checkbox_color_state_list</item>
+    </style>
+
+    <style name="LikesCheckboxTheme">
+        <item name="android:colorControlHighlight">@color/colorLightGray</item>
+        <item name="android:colorControlActivated">@color/colorRed</item>
+        <item name="android:buttonTint">@color/like_checkbox_color_state_list</item>
+    </style>
+
+    <style name="RepostsCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:theme">@style/RepostsCheckboxTheme</item>
+        <item name="android:textColor">@color/reposts_checkbox_color_state_list</item>
+        <item name="android:buttonTint">@color/reposts_checkbox_color_state_list</item>
+    </style>
+
+    <style name="RepostsCheckboxTheme">
+        <item name="android:colorControlHighlight">@color/colorLightGray</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+    <style name="CommentsCheckbox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:theme">@style/CommentsCheckboxTheme</item>
+        <item name="android:textColor">@color/colorLightGray</item>
+        <item name="android:buttonTint">@color/colorLightGray</item>
+    </style>
+
+    <style name="CommentsCheckboxTheme">
+        <item name="android:colorControlHighlight">@color/colorLightGray</item>
+        <item name="android:colorControlActivated">@color/colorLightGray</item>
+    </style>
+
+    <style name="ShowAllTextButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:theme">@style/ShowAllTextButtonTheme</item>
+    </style>
+
+    <style name="ShowAllTextButtonTheme">
+        <item name="android:colorControlHighlight">@color/colorLightBlue
+        </item>
+    </style>
+
 </resources>

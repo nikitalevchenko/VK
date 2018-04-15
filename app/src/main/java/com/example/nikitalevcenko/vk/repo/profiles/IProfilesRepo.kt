@@ -6,6 +6,7 @@ import com.example.nikitalevcenko.vk.repo.NetworkState
 
 interface IProfilesRepo {
     fun profile(): ProfileLisitng
+    fun profileCash(id: Long): LiveData<Profile>
 }
 
 data class ProfileLisitng(val profile: LiveData<Profile>,

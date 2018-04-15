@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/white"
+        app:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/sourceLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="16dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/sourcePhotoImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/sourceNameTextView"
+                        style="@style/NewsSourceNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/sourceDateTextView"
+                        style="@style/NewsSourceDateTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_borderless_image_button"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:paddingEnd="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingStart="8dp"
+                    android:src="@drawable/ic_more_vert_white_24dp"
+                    android:tint="@color/colorLightGray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ownerLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ownerPhotoImageView"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ownerNameTextView"
+                        style="@style/NewsSourceNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/ownerDateTextView"
+                        style="@style/NewsSourceDateTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/newsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:textColor="@android:color/primary_text_light" />
+
+            <Button
+                android:id="@+id/showAllTextButton"
+                style="@style/ShowAllTextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/show_all"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:id="@+id/contentFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/likesCheckBox"
+                    style="@style/LikesCheckbox"
+                    android:layout_width="72dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:button="@drawable/drawable_like_ckeckbox"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8dp"
+                    android:text="2" />
+
+                <CheckBox
+                    android:id="@+id/commentsCheckbox"
+                    style="@style/CommentsCheckbox"
+                    android:layout_width="72dp"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/ic_chat_bubble_outline_white_24dp"
+                    android:drawableTint="@color/colorLightGray"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8dp" />
+
+                <CheckBox
+                    android:id="@+id/repostsCheckbox"
+                    style="@style/RepostsCheckbox"
+                    android:layout_width="72dp"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/ic_share_white_24dp"
+                    android:buttonTint="@color/reposts_checkbox_color_state_list"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/viewsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@drawable/ic_visibility_white_24dp"
+                    android:drawableTint="@color/colorLightGray"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="fill_vertical|end"
+                    android:text="69" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

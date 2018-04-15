@@ -26,12 +26,12 @@ class MoreViewModel(override val router: Router,
     }
 
     override fun onRefresh() {
-        profileLisitng.refresh.invoke()
+        profileLisitng.refresh()
     }
 
     override fun onNetworkConnectionChanged(connected: Boolean) {
         if (connected && profileLisitng.networkState.value?.status == Status.FAILED) {
-            profileLisitng.refresh.invoke()
+            profileLisitng.refresh()
         }
     }
 }

@@ -13,6 +13,8 @@ class ProfilesRepo(private val settingsStore: SettingsStore,
                    private val api: Api,
                    private val db: Database) : IProfilesRepo, ApiResponseHandler {
 
+    override fun profileCash(id: Long)= db.profiles().profile(id)
+
     override fun profile(): ProfileLisitng {
         val dbSource = db.profiles().profile(settingsStore.userId())
 
@@ -39,16 +41,22 @@ class ProfilesRepo(private val settingsStore: SettingsStore,
         val networkSource = api.loadProfile(settingsStore.accessToken(), settingsStore.userId())
 
         networkState.addSource(networkSource, { response ->
-            networkState.value = handleApiResponse(response, { profiles ->
+
+            networkState.value = handleApiResponse(response = response, map = { profileJsons ->
+                val jsonProfile = profileJsons[0]
+                return@handleApiResponse Profile(jsonProfile.id,
+                        jsonProfile.firstName,
+                        jsonProfile.lastName,
+                        jsonProfile.photo100)
+
+            }, onSuccess = { profileEntity ->
                 async {
-                    db.profiles().insertOrReplace(profiles[0])
+                    db.profiles().insertOrReplace(profileEntity)
                 }
-                profile.value = profiles[0]
+                profile.value = profileEntity
             })
 
             networkState.removeSource(networkSource)
         })
     }
-
-
 }

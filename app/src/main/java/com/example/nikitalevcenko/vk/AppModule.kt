@@ -11,6 +11,10 @@ import com.example.nikitalevcenko.vk.receivers.NetworkConnectionListener
 import com.example.nikitalevcenko.vk.receivers.NetworkConnectionListenerReceiver
 import com.example.nikitalevcenko.vk.repo.auth.AuthRepo
 import com.example.nikitalevcenko.vk.repo.auth.IAuthRepo
+import com.example.nikitalevcenko.vk.repo.groups.GroupsRepo
+import com.example.nikitalevcenko.vk.repo.groups.IGroupsRepo
+import com.example.nikitalevcenko.vk.repo.news.INewsRepo
+import com.example.nikitalevcenko.vk.repo.news.NewsRepo
 import com.example.nikitalevcenko.vk.repo.profiles.IProfilesRepo
 import com.example.nikitalevcenko.vk.repo.profiles.ProfilesRepo
 import com.example.nikitalevcenko.vk.settings.SettingsStore
@@ -70,5 +74,19 @@ class AppModule(private val appContext: Context) {
     @Singleton
     fun profilesRepo(settingsStore: SettingsStore, api: Api, db: Database): IProfilesRepo {
         return ProfilesRepo(settingsStore, api, db)
+    }
+
+    @Provides
+    @NonNull
+    @Singleton
+    fun newsRepo(settingsStore: SettingsStore, api: Api, db: Database, context: Context): INewsRepo {
+        return NewsRepo(settingsStore, api, db, context)
+    }
+
+    @Provides
+    @NonNull
+    @Singleton
+    fun groupsRepo(db: Database): IGroupsRepo {
+        return GroupsRepo(db)
     }
 }
